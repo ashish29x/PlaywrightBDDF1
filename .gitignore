@@ -1,0 +1,23 @@
+# =============================
+# Generated artifacts
+# =============================
+reports/
+playwright-report/
+test-results/
+coverage/
+dist/
+
+# =============================
+# Node dependencies
+# =============================
+node_modules/
+
+# =============================
+# Environment variables (Sensitive)
+# =============================
+.env
+
+# =============================
+# Persisted authentication state (Sensitive)
+# =============================
+tests/support/storageState.json

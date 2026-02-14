@@ -1,0 +1,28 @@
+{
+  "name": "playwright-bdd-framework",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "cucumber-js tests/features/**/*.feature --require-module ts-node/register --require tests/step-definitions/**/*.ts --require tests/support/**/*.ts --format progress",
+    "test:debug": "cucumber-js tests/features/**/*.feature --require-module ts-node/register --require tests/step-definitions/**/*.ts --require tests/support/**/*.ts --format progress",
+    "auth:save": "node scripts/saveStorageState.js",
+    "report:html": "cucumber-js tests/features/**/*.feature --require-module ts-node/register --require tests/step-definitions/**/*.ts --require tests/support/**/*.ts --format @cucumber/html-formatter:reports/cucumber-report.html",
+    "report:json": "cucumber-js tests/features/**/*.feature --require-module ts-node/register --require tests/step-definitions/**/*.ts --require tests/support/**/*.ts --format json:reports/cucumber.json",
+    "report:html-from-json": "node scripts/generateHtmlReport.js",
+    "report:open": "open reports/cucumber-report.html",
+    "test:report": "npm run report:json && npm run report:html-from-json",
+    "playwright:install": "npx playwright install",
+    "prepare": "npx playwright install"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^9.0.0",
+    "@cucumber/html-formatter": "^20.4.0",
+    "cucumber-html-reporter": "^5.5.0",
+    "@types/chai": "^5.2.3",
+    "@types/node": "^18.0.0",
+    "chai": "^4.3.6",
+    "playwright": "^1.35.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  }
+}
