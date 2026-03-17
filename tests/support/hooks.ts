@@ -7,7 +7,7 @@ let browser: Browser;
 
 BeforeAll(async function () {
   // Launch a single browser instance for the entire test suite and make it headless false for lunching the browser in headed mode
-  browser = await chromium.launch({ headless: false });
+  browser = await chromium.launch({ headless: true });
 
   // Ensure storageState exists; if missing, perform a login and save it so tests can reuse the authenticated session
   const statePath = 'tests/support/storageState.json';
@@ -24,7 +24,8 @@ BeforeAll(async function () {
       await page.fill('#user-name', creds.username);
       await page.fill('#password', creds.password);
       await page.click('#login-button');
-      await page.locator('.title').waitFor({ timeout: 5000 });
+      //await page.locator('.title').waitFor({ timeout: 5000 });
+      await page.locator('.title').waitFor({ state: 'visible', timeout: 5000 });
 
       await ctx.storageState({ path: statePath });
       await page.close();

@@ -20,7 +20,8 @@ const fs = require('fs');
   await page.fill('#user-name', creds.username);
   await page.fill('#password', creds.password);
   await page.click('#login-button');
-  await page.locator('.title').waitFor({ timeout: 5000 });
+  //await page.locator('.title').waitFor({ timeout: 5000 });
+  await page.locator('.title').waitFor({ state: 'visible', timeout: 5000 });
 
   await context.storageState({ path: statePath });
   console.log(`Saved storage state to ${statePath}`);

@@ -20,7 +20,8 @@ export class LoginPage {
     await this.page.fill(this.passwordInput, password);
     await this.page.click(this.submitBtn);
     // Wait for the Products title on the inventory page after successful login
-    await this.page.locator('.title').waitFor({ timeout: 5000 });
+    //await this.page.locator('.title').waitFor({ timeout: 5000 });
+    await this.page.locator('.title').waitFor({ state: 'visible', timeout: 5000 });
   }
 
   async isAtDashboard(): Promise<boolean> {
