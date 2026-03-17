@@ -6,7 +6,8 @@ setDefaultTimeout(60_000);
 let browser: Browser;
 
 BeforeAll(async function () {
-  browser = await chromium.launch({ headless: true });
+  // Launch a single browser instance for the entire test suite and make it headless false for lunching the browser in headed mode
+  browser = await chromium.launch({ headless: false });
 
   // Ensure storageState exists; if missing, perform a login and save it so tests can reuse the authenticated session
   const statePath = 'tests/support/storageState.json';
